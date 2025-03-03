@@ -3,7 +3,7 @@ name: test-secret-value ON dev only
 on:
   push:
     branches:
-      - test-secret-value  # Runs only on this branch
+      - check-secret-value  # Runs only on this branch
   workflow_dispatch:  # Allows manual trigger
 
 jobs:
