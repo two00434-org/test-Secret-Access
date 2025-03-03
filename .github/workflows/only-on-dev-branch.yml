@@ -1,0 +1,22 @@
+name: test-secret-value ON dev only
+
+on:
+  push:
+    branches:
+      - test-secret-value  # Runs only on this branch
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  test-secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if last 4 characters of secret match 'abcd'
+        env:
+          SECRET_VALUE: ${{ secrets.SECRET2 }}
+        run: |
+          LAST_FOUR=$(echo "$SECRET_VALUE" | tail -c 5)  # Extract last 4 characters
+          if [ "$LAST_FOUR" = "orld" ]; then
+            echo "Secret matched"
+          else
+            echo "Secret does NOT match"
+          fi
