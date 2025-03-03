@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Check if last 4 characters of secret match 'abcd'
         env:
-          SECRET_VALUE: ${{ secrets.SECRET2 }}
+          SECRET_VALUE: ${{ secrets.ORG_SECRET }}
         run: |
           LAST_FOUR=$(echo "$SECRET_VALUE" | tail -c 5)  # Extract last 4 characters
           if [ "$LAST_FOUR" = "orld" ]; then
